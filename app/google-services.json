@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "91336473290",
+    "project_id": "stylyst-7d67b",
+    "storage_bucket": "stylyst-7d67b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:91336473290:android:8451e6da4b7dc139f09233",
+        "android_client_info": {
+          "package_name": "com.nappdeveloper.stylyst"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "91336473290-qcinu18kj4qvon4if13rmq5ost28mkpp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfJ0FBYYE0SgW6BW7PV6-t3qmKN_4KSHQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "91336473290-qcinu18kj4qvon4if13rmq5ost28mkpp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
