@@ -58,7 +58,7 @@ public class homeFilterAdapter extends FirebaseRecyclerAdapter<Model, homeFilter
                 bundle.putString("name",name); //key and value
                 //set Fragmentclass Arguments
                 fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.homeFrameLayout, fragment);
+                fragmentTransaction.replace(R.id.homeFilterResultFrameLayout, fragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 

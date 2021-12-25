@@ -3,6 +3,9 @@ package com.nappdeveloper.salon.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,6 +33,14 @@ public class homeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
+
+        //Fragment to show the results of food filters
+        Fragment fragment = new homeFilterResultFragment();
+        FragmentManager fragmentManager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.homeFilterResultFrameLayout, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
         //RecyclerView Code For Food Filters
         filterDatabaseReference = FirebaseDatabase.getInstance().getReference().child("filterSolonList");
