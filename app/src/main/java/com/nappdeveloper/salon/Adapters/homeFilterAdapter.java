@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -93,12 +94,12 @@ public class homeFilterAdapter extends FirebaseRecyclerAdapter<Model, homeFilter
     class Viewholder extends RecyclerView.ViewHolder {
 
         TextView filterNameTxt;
-        CardView linearLayout;
+        LinearLayout linearLayout;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
-            linearLayout = (CardView) itemView.findViewById(R.id.home_text_filter_card);
+            linearLayout = (LinearLayout) itemView.findViewById(R.id.home_text_filter_card);
             filterNameTxt = (TextView) itemView.findViewById(R.id.filterText);
 
         }
