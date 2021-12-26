@@ -1,10 +1,12 @@
 package com.nappdeveloper.salon.Adapters;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,8 +18,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.nappdeveloper.salon.Activities.shopServiceActivity;
 import com.nappdeveloper.salon.Fragments.homeFilterResultFragment;
 import com.nappdeveloper.salon.Model.Model;
 import com.nappdeveloper.salon.R;
@@ -25,6 +29,7 @@ import com.nappdeveloper.salon.R;
 public class exploreAdapter extends FirebaseRecyclerAdapter<Model, exploreAdapter.Viewholder> {
 
     private int selected_position = 0;
+
     public exploreAdapter(@NonNull FirebaseRecyclerOptions<Model> options) {
 
         super(options);
@@ -34,26 +39,18 @@ public class exploreAdapter extends FirebaseRecyclerAdapter<Model, exploreAdapte
     @Override
     protected void onBindViewHolder(@NonNull exploreAdapter.Viewholder holder, @SuppressLint("RecyclerView") int position, @NonNull Model model) {
 
-        String name=model.getFilterName().toString();
+        String name = model.getFilterName().toString();
         holder.filterNameTxt.setText(name);
+        holder.exploreCategoryName.setText(model.getShopName());
+        Glide.with(holder.imageView).load(model.getShopImage()).into(holder.imageView);
 
 
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Fragment fragment = new homeFilterResultFragment();
-                FragmentManager fragmentManager = ((FragmentActivity) v.getContext()).getSupportFragmentManager(); // this is basically context of the class
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Bundle bundle = new Bundle();
-                bundle.putString("name",name); //key and value
-                //set Fragmentclass Arguments
-                fragment.setArguments(bundle);
-                fragmentTransaction.replace(R.id.homeFilterResultFrameLayout, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-
+                Intent intent = new Intent(v.getContext(), shopServiceActivity.class);
+                v.getContext().startActivity(intent);
 
                 int previousItem = selected_position;
                 selected_position = position;
@@ -86,12 +83,16 @@ public class exploreAdapter extends FirebaseRecyclerAdapter<Model, exploreAdapte
 
         LinearLayout linearLayout;
         TextView filterNameTxt;
+        TextView exploreCategoryName;
+        ImageView imageView;
 
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
             linearLayout = (LinearLayout) itemView.findViewById(R.id.explore_shops_card);
+            imageView = (ImageView) itemView.findViewById(R.id.exploreShopImage);
             filterNameTxt = (TextView) itemView.findViewById(R.id.exploreShopName);
+            exploreCategoryName = (TextView) itemView.findViewById(R.id.exploreCategoryName);
 
         }
     }

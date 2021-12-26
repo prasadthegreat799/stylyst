@@ -3,6 +3,7 @@
     package="com.nappdeveloper.salon">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,6 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Salon">
+        <activity
+            android:name=".Activities.cartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activities.shopServiceActivity"
+            android:exported="false" />
         <activity
             android:name=".Activities.loginActivity"
             android:exported="false" />
