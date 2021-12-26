@@ -9,8 +9,9 @@
         android:id="@+id/filterResultRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:overScrollMode="never"
         android:clipToPadding="false"/>
 
 </FrameLayout>

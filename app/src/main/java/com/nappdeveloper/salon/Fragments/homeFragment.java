@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
@@ -19,12 +20,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.nappdeveloper.salon.Adapters.homeFilterAdapter;
 import com.nappdeveloper.salon.Model.Model;
 import com.nappdeveloper.salon.R;
+import com.synnapps.carouselview.CarouselView;
+import com.synnapps.carouselview.ImageListener;
 
 public class homeFragment extends Fragment {
 
     RecyclerView filterRecyclerView;
     homeFilterAdapter filterAdapter;
+    CarouselView carouselView;
     DatabaseReference filterDatabaseReference;
+
+    int[] sampleImages = {R.drawable.saloon1, R.drawable.saloon2, R.drawable.saloon3};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,6 +39,10 @@ public class homeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
+        carouselView = (CarouselView) view.findViewById(R.id.carouselView);
+        carouselView.setPageCount(sampleImages.length);
+
+        carouselView.setImageListener(imageListener);
 
         //Fragment to show the results of food filters
         Fragment fragment = new homeFilterResultFragment();
@@ -58,6 +68,13 @@ public class homeFragment extends Fragment {
 
         return view;
     }
+
+    ImageListener imageListener = new ImageListener() {
+        @Override
+        public void setImageForPosition(int position, ImageView imageView) {
+            imageView.setImageResource(sampleImages[position]);
+        }
+    };
 
     @Override
     public void onStart() {
