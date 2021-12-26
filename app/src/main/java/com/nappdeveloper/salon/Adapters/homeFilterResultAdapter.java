@@ -58,7 +58,7 @@ public class homeFilterResultAdapter extends FirebaseRecyclerAdapter<Model, home
         public Viewholder(@NonNull View itemView) {
             super(itemView);
 
-            cardView = (CardView) itemView.findViewById(R.id.homeResultCard);
+            //cardView = (CardView) itemView.findViewById(R.id.homeResultCard);
             filterNameTxt = (TextView) itemView.findViewById(R.id.homeShopNameTxt);
 
         }
