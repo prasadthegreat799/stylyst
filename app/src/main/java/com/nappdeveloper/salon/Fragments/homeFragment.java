@@ -36,6 +36,7 @@ public class homeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -43,6 +44,7 @@ public class homeFragment extends Fragment {
         carouselView.setPageCount(sampleImages.length);
 
         carouselView.setImageListener(imageListener);
+
 
         //Fragment to show the results of food filters
         Fragment fragment = new homeFilterResultFragment();
@@ -55,6 +57,7 @@ public class homeFragment extends Fragment {
         //RecyclerView Code For Food Filters
         filterDatabaseReference = FirebaseDatabase.getInstance().getReference().child("filterSolonList");
         filterRecyclerView = (RecyclerView) view.findViewById(R.id.homeFilterRecyclerView);
+        filterRecyclerView.hasFixedSize();
         filterRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         filterRecyclerView.getRecycledViewPool().clear();
 
@@ -88,5 +91,11 @@ public class homeFragment extends Fragment {
 
         filterAdapter.stopListening();
         super.onStop();
+    }
+
+    @Override
+    public void onResume() {
+        filterAdapter.startListening();
+        super.onResume();
     }
 }
