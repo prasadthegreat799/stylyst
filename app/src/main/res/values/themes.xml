@@ -15,4 +15,9 @@
         <!-- Customize your theme here. -->
         <item name="android:fontFamily">@font/muli_semibold</item>
     </style>
+
+    <style name="roundedCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
 </resources>

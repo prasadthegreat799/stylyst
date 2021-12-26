@@ -55,7 +55,7 @@ public class homeFragment extends Fragment {
         fragmentTransaction.commit();
 
         //RecyclerView Code For Food Filters
-        filterDatabaseReference = FirebaseDatabase.getInstance().getReference().child("filterSolonList");
+        filterDatabaseReference = FirebaseDatabase.getInstance().getReference().child("salonData");
         filterRecyclerView = (RecyclerView) view.findViewById(R.id.homeFilterRecyclerView);
         filterRecyclerView.hasFixedSize();
         filterRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
